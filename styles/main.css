@@ -1,0 +1,585 @@
+/* Variant Dashboard - Taipy Version - Main Styles */
+
+/* =============================================================================
+   ROOT VARIABLES & THEME
+   ============================================================================= */
+
+:root {
+    --background: #0F172A;
+    --surface: #1E293B;
+    --border: #334155;
+    --text-primary: #F1F5F9;
+    --text-secondary: #94A3B8;
+    --accent: #14B8A6;
+    --accent-hover: #0D9488;
+    --success: #34D399;
+    --warning: #FBBF24;
+    --danger: #F87171;
+    --card-bg: #1E293B;
+    --input-bg: #0F172A;
+    --hover: #334155;
+    --table-header-bg: #334155;
+    --table-row-odd: #1E293B;
+    --table-row-even: #0F172A;
+    
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --border-radius: 8px;
+    --border-radius-lg: 12px;
+}
+
+/* Light theme override */
+[data-theme="light"] {
+    --background: #F8FAFC;
+    --surface: #FFFFFF;
+    --border: #CBD5E1;
+    --text-primary: #0F172A;
+    --text-secondary: #475569;
+    --accent: #0F766E;
+    --accent-hover: #0D5D56;
+    --success: #059669;
+    --warning: #D97706;
+    --danger: #DC2626;
+    --card-bg: #FFFFFF;
+    --input-bg: #F1F5F9;
+    --hover: #E2E8F0;
+    --table-header-bg: #E2E8F0;
+    --table-row-odd: #FFFFFF;
+    --table-row-even: #F8FAFC;
+}
+
+/* =============================================================================
+   BASE STYLES
+   ============================================================================= */
+
+html, body {
+    font-family: var(--font-family) !important;
+    background-color: var(--background) !important;
+    color: var(--text-primary) !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    min-height: 100vh !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary) !important;
+    font-family: var(--font-family) !important;
+}
+
+p, span, div, label {
+    color: var(--text-primary);
+    font-family: var(--font-family);
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
+}
+
+/* =============================================================================
+   CONTAINERS & LAYOUT
+   ============================================================================= */
+
+.main-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: var(--background);
+    min-height: 100vh;
+}
+
+.login-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--background);
+    padding: 20px;
+}
+
+.login-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: 40px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+/* =============================================================================
+   BUTTONS
+   ============================================================================= */
+
+button, .taipy-button {
+    font-family: var(--font-family) !important;
+    border-radius: var(--border-radius) !important;
+    font-weight: 500 !important;
+    transition: all 0.2s ease !important;
+}
+
+.login-button {
+    background-color: var(--accent) !important;
+    color: white !important;
+    width: 100% !important;
+    padding: 12px 24px !important;
+    font-size: 16px !important;
+    margin-top: 16px !important;
+}
+
+.login-button:hover {
+    background-color: var(--accent-hover) !important;
+}
+
+.nav-button {
+    background-color: var(--accent) !important;
+    color: white !important;
+    padding: 12px 32px !important;
+    font-size: 16px !important;
+}
+
+.nav-button:hover {
+    background-color: var(--accent-hover) !important;
+    transform: translateY(-2px);
+}
+
+.load-button {
+    background-color: var(--accent) !important;
+    color: white !important;
+    padding: 12px 48px !important;
+    font-size: 16px !important;
+    margin: 20px 0 !important;
+}
+
+.load-button:hover {
+    background-color: var(--accent-hover) !important;
+}
+
+.back-button {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+}
+
+.back-button:hover {
+    background-color: var(--hover) !important;
+}
+
+.theme-button, .logout-button, .admin-button, .icon-button {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+    padding: 8px 16px !important;
+}
+
+.theme-button:hover, .logout-button:hover, .admin-button:hover, .icon-button:hover {
+    background-color: var(--hover) !important;
+}
+
+.refresh-button {
+    background-color: var(--accent) !important;
+    color: white !important;
+    padding: 8px 16px !important;
+    width: 100% !important;
+}
+
+.reset-button {
+    background-color: var(--surface) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+    margin-top: 24px !important;
+}
+
+/* =============================================================================
+   INPUTS & FORM ELEMENTS
+   ============================================================================= */
+
+input, select, textarea, .taipy-input, .taipy-selector {
+    background-color: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--border-radius) !important;
+    font-family: var(--font-family) !important;
+    padding: 10px 12px !important;
+}
+
+input:focus, select:focus, textarea:focus {
+    border-color: var(--accent) !important;
+    outline: none !important;
+    box-shadow: 0 0 0 2px rgba(20, 184, 166, 0.2) !important;
+}
+
+.login-input {
+    margin-bottom: 16px !important;
+}
+
+.plan-selector, .metric-selector {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* =============================================================================
+   TABLES
+   ============================================================================= */
+
+table, .taipy-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--card-bg);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+th {
+    background-color: var(--table-header-bg) !important;
+    color: var(--text-primary) !important;
+    font-weight: 600;
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+td {
+    padding: 10px 16px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text-primary);
+}
+
+tr:nth-child(odd) {
+    background-color: var(--table-row-odd);
+}
+
+tr:nth-child(even) {
+    background-color: var(--table-row-even);
+}
+
+tr:hover {
+    background-color: var(--hover) !important;
+}
+
+/* Sticky columns for pivot tables */
+.pivot-table th:nth-child(1),
+.pivot-table th:nth-child(2),
+.pivot-table th:nth-child(3),
+.pivot-table td:nth-child(1),
+.pivot-table td:nth-child(2),
+.pivot-table td:nth-child(3) {
+    position: sticky;
+    background-color: inherit;
+    z-index: 1;
+}
+
+.pivot-table th:nth-child(1),
+.pivot-table td:nth-child(1) {
+    left: 0;
+}
+
+.pivot-table th:nth-child(2),
+.pivot-table td:nth-child(2) {
+    left: 100px;
+}
+
+.pivot-table th:nth-child(3),
+.pivot-table td:nth-child(3) {
+    left: 200px;
+    border-right: 2px solid var(--accent);
+}
+
+.dashboard-table {
+    margin: 20px 0;
+}
+
+/* =============================================================================
+   CARDS & PANELS
+   ============================================================================= */
+
+.refresh-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius-lg);
+    padding: 20px;
+}
+
+.demo-credentials {
+    background: var(--surface);
+    border: 1px solid var(--accent);
+    border-radius: var(--border-radius);
+    padding: 16px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* =============================================================================
+   TABS / TOGGLE
+   ============================================================================= */
+
+.tab-toggle {
+    margin: 20px 0;
+}
+
+.tab-toggle .taipy-toggle {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+.tab-toggle .taipy-toggle button {
+    background: transparent !important;
+    color: var(--text-secondary) !important;
+    border: none !important;
+    padding: 10px 24px !important;
+}
+
+.tab-toggle .taipy-toggle button.selected,
+.tab-toggle .taipy-toggle button[aria-pressed="true"] {
+    background: var(--accent) !important;
+    color: white !important;
+}
+
+/* =============================================================================
+   EXPANDABLE / ACCORDION
+   ============================================================================= */
+
+.taipy-expandable {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--border-radius-lg) !important;
+    margin: 16px 0 !important;
+}
+
+.taipy-expandable-header {
+    background: var(--surface) !important;
+    color: var(--text-primary) !important;
+    padding: 16px !important;
+    font-weight: 600 !important;
+}
+
+.taipy-expandable-content {
+    padding: 20px !important;
+    background: var(--card-bg) !important;
+}
+
+/* =============================================================================
+   DIALOGS / MODALS
+   ============================================================================= */
+
+.taipy-dialog {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--border-radius-lg) !important;
+    color: var(--text-primary) !important;
+}
+
+.taipy-dialog-header {
+    background: var(--surface) !important;
+    border-bottom: 1px solid var(--border) !important;
+    padding: 16px 20px !important;
+}
+
+.taipy-dialog-content {
+    padding: 20px !important;
+}
+
+/* =============================================================================
+   CHARTS
+   ============================================================================= */
+
+.taipy-chart {
+    background: var(--card-bg) !important;
+    border-radius: var(--border-radius-lg) !important;
+    padding: 16px !important;
+    margin: 8px 0 !important;
+}
+
+/* =============================================================================
+   NOTIFICATIONS
+   ============================================================================= */
+
+.taipy-notification {
+    border-radius: var(--border-radius) !important;
+    font-family: var(--font-family) !important;
+}
+
+/* =============================================================================
+   SCROLLBAR
+   ============================================================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--text-secondary);
+}
+
+/* =============================================================================
+   UTILITY CLASSES
+   ============================================================================= */
+
+.error-text {
+    color: var(--danger) !important;
+    font-size: 14px;
+    margin-top: 8px;
+}
+
+.refresh-status {
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 20px 0;
+}
+
+/* =============================================================================
+   NAVBAR
+   ============================================================================= */
+
+.taipy-navbar {
+    background: var(--surface) !important;
+    border-bottom: 1px solid var(--border) !important;
+    display: none !important; /* Hidden - we use our own navigation */
+}
+
+/* =============================================================================
+   RESPONSIVE ADJUSTMENTS
+   ============================================================================= */
+
+@media (max-width: 768px) {
+    .main-container {
+        padding: 10px;
+    }
+    
+    .login-card {
+        padding: 20px;
+        margin: 10px;
+    }
+    
+    th, td {
+        padding: 8px 10px;
+        font-size: 13px;
+    }
+}
+
+/* =============================================================================
+   DATE PICKER OVERRIDES
+   ============================================================================= */
+
+.taipy-date {
+    background: var(--input-bg) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--border-radius) !important;
+}
+
+.taipy-date input {
+    color: var(--text-primary) !important;
+}
+
+/* =============================================================================
+   SELECTOR / DROPDOWN OVERRIDES
+   ============================================================================= */
+
+.taipy-selector {
+    min-width: 150px;
+}
+
+.taipy-selector .MuiSelect-select {
+    background: var(--input-bg) !important;
+    color: var(--text-primary) !important;
+}
+
+.taipy-selector .MuiOutlinedInput-notchedOutline {
+    border-color: var(--border) !important;
+}
+
+.taipy-selector:hover .MuiOutlinedInput-notchedOutline {
+    border-color: var(--accent) !important;
+}
+
+/* Dropdown menu */
+.MuiMenu-paper {
+    background: var(--card-bg) !important;
+    border: 1px solid var(--border) !important;
+}
+
+.MuiMenuItem-root {
+    color: var(--text-primary) !important;
+}
+
+.MuiMenuItem-root:hover {
+    background: var(--hover) !important;
+}
+
+/* =============================================================================
+   LOADING INDICATOR
+   ============================================================================= */
+
+.taipy-loading {
+    color: var(--accent) !important;
+}
+
+/* =============================================================================
+   CHART LEGEND (Custom)
+   ============================================================================= */
+
+.chart-legend {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: 10px 16px;
+    margin-bottom: 16px;
+    max-height: 60px;
+    overflow-y: auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--text-primary);
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+}
