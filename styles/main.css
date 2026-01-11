@@ -1,0 +1,17 @@
+/* Variant Dashboard - Taipy - Minimal Styles */
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.error-text {
+    color: #F87171;
+}
+
+.nav-button {
+    margin: 10px 0;
+}
+
+.load-button {
+    margin: 20px 0;
+}
