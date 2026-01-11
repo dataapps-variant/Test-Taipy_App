@@ -1,0 +1,70 @@
+# Cloud Build configuration for Variant Dashboard - Taipy Version
+
+steps:
+  # Build Docker image
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'build'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/variant-dashboard-taipy:$COMMIT_SHA'
+      - '-t'
+      - 'gcr.io/$PROJECT_ID/variant-dashboard-taipy:latest'
+      - '.'
+
+  # Push images
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/variant-dashboard-taipy:$COMMIT_SHA']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'gcr.io/$PROJECT_ID/variant-dashboard-taipy:latest']
+
+  # Deploy to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: 'gcloud'
+    args:
+      - 'run'
+      - 'deploy'
+      - 'variant-dashboard-taipy'
+      - '--image'
+      - 'gcr.io/$PROJECT_ID/variant-dashboard-taipy:$COMMIT_SHA'
+      - '--region'
+      - 'us-central1'
+      - '--platform'
+      - 'managed'
+      # Memory for data caching
+      - '--memory'
+      - '4Gi'
+      # 2 CPUs
+      - '--cpu'
+      - '2'
+      # Request timeout
+      - '--timeout'
+      - '300'
+      # Concurrency
+      - '--concurrency'
+      - '80'
+      # Minimum 1 instance to avoid cold starts
+      - '--min-instances'
+      - '1'
+      - '--max-instances'
+      - '10'
+      - '--allow-unauthenticated'
+      - '--service-account'
+      - 'variant-dashboard-sa@$PROJECT_ID.iam.gserviceaccount.com'
+      - '--set-env-vars'
+      - 'GCS_CACHE_BUCKET=variant-dashboard-cache-$PROJECT_ID,SECRET_KEY=${_SECRET_KEY}'
+      # CPU always allocated
+      - '--cpu-boost'
+      - '--no-cpu-throttling'
+
+images:
+  - 'gcr.io/$PROJECT_ID/variant-dashboard-taipy:$COMMIT_SHA'
+  - 'gcr.io/$PROJECT_ID/variant-dashboard-taipy:latest'
+
+timeout: '1200s'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
+
+substitutions:
+  _SECRET_KEY: 'change-this-in-production-use-secrets-manager'
